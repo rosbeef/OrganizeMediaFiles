@@ -286,9 +286,9 @@ def nextcloud_files_scan():
         #then regenerate thumbnail (trully recomended on small servers)
         #source 1 https://www.bentasker.co.uk/posts/documentation/linux/671-improving-nextcloud-s-thumbnail-response-time.html
         #source 2 https://rayagainstthemachine.net/linux%20administration/nextcloud-photos/
-        subprocess.Popen("cd {}/apps;\
-                         chown -R {}:{} ./previewgenerator \ 
-                         sudo -u {} bash \
+        subprocess.Popen('cd {}/apps; \
+                         chown -R {}:{} ./previewgenerator ; \
+                         sudo -u {} bash ; \
                          git clone https://github.com/rullzer/previewgenerator.git; \
                          cd ..; \
                          php --define apc.enable_cli=1 ./occ config:system:set preview_max_x --value {}; \
@@ -297,8 +297,8 @@ def nextcloud_files_scan():
                          php --define apc.enable_cli=1 ./occ config:app:set --value="{}" previewgenerator squareSizes; \
                          php --define apc.enable_cli=1 ./occ config:app:set --value="{}" previewgenerator widthSizes; \
                          php --define apc.enable_cli=1 ./occ config:app:set --value="{}" previewgenerator heightSizes; \
-                         php --define apc.enable_cli=1 ./occ preview:generate-all -vvv;
-                         ".format( NEXTCLOUD_PATH, \
+                         php --define apc.enable_cli=1 ./occ preview:generate-all -vvv; \
+                         '.format( NEXTCLOUD_PATH, \
                          NEXTCLOUD_USER, NEXTCLOUD_GROUP, \
                          NEXTCLOUD_USER, \
                          NC_CONFIG_PREVIEW_MAX_X, \
